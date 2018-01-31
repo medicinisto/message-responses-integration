@@ -1,0 +1,17 @@
+{
+  "app_id": "layer:///apps/staging/2f1707c0-fd2f-11e6-ae72-c27751092ce1",
+  "service_name": "layer-card-responses-philo",
+  "provider": "aws",
+  "webhook": {
+    "secret": "test123",
+    "events": [
+      "Message.created"
+    ]
+  },
+  "api": {
+    "token": "secretoken",
+    "permissions": []
+  },
+  "kinesis_arn": "kinesisarn",
+  "kinesis_shards": "1"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "layer-message-responses-aws",
+  "version": "1.0.0-pre1.0",
+  "description": "Layer Message Responses Integration using Serverless and AWS",
+  "author": "Layer inc. <dev@layer.com>",
+  "repository": "layerhq/message-responses-integration",
+  "scripts": {
+    "deploy": "npm install; serverless deploy",
+    "test": "LAYER_CONFIG=../test/mock/layer_config_test.json LOG_LEVEL=none sls invoke test"
+  },
+  "dependencies": {
+    "@layerhq/idk": "^1.0.0-pre1.0",
+    "aws-sdk": "^2.67.0",
+    "common": "file:./common/"
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "^1.7.0",
+    "serverless-mocha-plugin": "^1.7.0",
+    "standard": "^10.0.2"
+  }
+}

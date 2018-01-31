@@ -1,0 +1,27 @@
+
+name: 'Message Responses Integration'
+provider: azure
+
+webhook:
+  type: post-event
+  events:
+    - Message.created
+
+api:
+  permissions: []
+
+input:
+  -
+    key: storage_account_name
+    type: text
+    default: null
+    name: Azure Storage account name
+    description: Storage account name used for TableDB
+    required: true
+  -
+    key: storage_access_key
+    type: text
+    default: null
+    name: Azure Storage access key
+    description: Storage access key used for TableDB
+    required: true

@@ -1,0 +1,29 @@
+{
+  "name": "layer-message-responses-azure",
+  "version": "1.0.0-pre1.0",
+  "description": "Layer Message Responses Integration using Serverless and AWS",
+  "author": "Layer inc. <dev@layer.com>",
+  "repository": "layerhq/message-responses-integration",
+  "scripts": {
+    "build": "webpack",
+    "package": "node src/scripts/createStorageTable",
+    "deploy": "npm install; npm run package; npm run build; serverless deploy",
+    "test": "LAYER_CONFIG=../test/mock/layer_config_test.json LOG_LEVEL=none sls invoke test"
+  },
+  "eslintConfig": {
+    "globals": {
+      "window": true
+    }
+  },
+  "dependencies": {
+    "@layerhq/idk": "^1.0.0-pre1.0",
+    "azure-storage": "^2.2.2",
+    "common": "file:./common/"
+  },
+  "devDependencies": {
+    "proxyquire": "^1.8.0",
+    "serverless-azure-functions": "*",
+    "serverless-mocha-plugin": "^1.7.0",
+    "webpack": "^3.7.1"
+  }
+}

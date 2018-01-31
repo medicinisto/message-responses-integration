@@ -1,0 +1,46 @@
+
+service: layer-message-responses
+
+provider:
+  name: azure
+  location: West US
+  stage: dev
+  timeout: 10s
+  environment:
+    SERVICE_NAME: ${self:service}
+
+plugins:
+  - serverless-azure-functions
+  - serverless-mocha-plugin
+
+functions:
+  webhook:
+    handler: dist/bundle.webhook
+    description: 'Layer Message Responses Webhook endpoint'
+    events:
+      - http: true
+        x-azure-settings:
+          methods:
+            - POST
+          route: webhook
+          authLevel: anonymous
+      - http: true
+        x-azure-settings:
+          type: http
+          direction: out
+          name: res
+  verify:
+    handler: dist/bundle.verify
+    description: 'Layer Message Responses Webhook verification endpoint'
+    events:
+      - http: true
+        x-azure-settings:
+          methods:
+            - GET
+          route: webhook
+          authLevel: anonymous
+      - http: true
+        x-azure-settings:
+          type: http
+          direction: out
+          name: res

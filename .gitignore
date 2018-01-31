@@ -1,0 +1,16 @@
+# package directories
+node_modules
+jspm_packages
+npm-debug.log
+
+# Serverless directories
+.serverless
+
+# keys
+layer_config.json
+
+# test scripts
+test.js
+
+# azure functions
+functions

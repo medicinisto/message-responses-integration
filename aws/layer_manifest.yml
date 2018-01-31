@@ -1,0 +1,27 @@
+
+name: 'Message Responses Integration'
+provider: aws
+
+webhook:
+  type: post-event
+  events:
+    - Message.created
+
+api:
+  permissions: []
+
+input:
+  -
+    key: kinesis_arn
+    type: text
+    default: null
+    name: Kinesis Stream ARN
+    description: Kinesis Stream ARN
+    required: true
+  -
+    key: kinesis_shards
+    type: number
+    default: 10
+    name: Kinesis Stream number of Shards
+    description: Kinesis Stream number of Shards
+    required: false

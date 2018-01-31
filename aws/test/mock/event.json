@@ -1,0 +1,54 @@
+{
+	"event": {
+		"id": "d694a3fb-5d56-48b3-9c6e-f517b8283bb5",
+		"type": "Message.created",
+		"created_at": "2017-10-04T20:08:22.087Z"
+	},
+	"actor": {
+		"id": "layer:///identities/852ebdd9-8b9f-4f7c-adcb-4d3ed0acb8cd",
+		"url": "https://api.layer.com/apps/2f1707c0-fd2f-11e6-ae72-c27751092ce1/identities/852ebdd9-8b9f-4f7c-adcb-4d3ed0acb8cd",
+		"user_id": "852ebdd9-8b9f-4f7c-adcb-4d3ed0acb8cd",
+		"display_name": "Arun",
+		"avatar_url": "https://layer.com/wp-content/uploads/2017/06/arun-shankar.png"
+	},
+	"message": {
+		"id": "layer:///messages/d694a3fb-5d56-48b3-9c6e-f517b8283bb5",
+		"url": "https://api.layer.com/apps/2f1707c0-fd2f-11e6-ae72-c27751092ce1/conversations/e9dac1de-29e8-4228-a319-e55d596984ed/messages/d694a3fb-5d56-48b3-9c6e-f517b8283bb5",
+		"conversation": {
+			"id": "layer:///conversations/e9dac1de-29e8-4228-a319-e55d596984ed",
+			"url": "https://api.layer.com/apps/2f1707c0-fd2f-11e6-ae72-c27751092ce1/conversations/e9dac1de-29e8-4228-a319-e55d596984ed"
+		},
+		"parts": [
+			{
+				"id": "layer:///messages/d694a3fb-5d56-48b3-9c6e-f517b8283bb5/parts/710e6e37-46d1-457c-9552-3768598eea25",
+				"url": "https://api.layer.com/messages/d694a3fb-5d56-48b3-9c6e-f517b8283bb5/parts/710e6e37-46d1-457c-9552-3768598eea25",
+				"mime_type": "application/vnd.layer.card.response+json;node-id=b9c15744-71b2-4748-aa8a-27c35d286626;role=root",
+				"body": "{\"action\":{},\"purpose\":\"\",\"custom_data\":{},\"response_to\":\"layer:///messages/d7da2324-bb05-4021-bc47-32d53058d47e\",\"response_to_node_id\":\"e063155a-9c29-41c8-a3cb-4492553e664f\",\"participant_data\":{\"thumborientation\":\"like\"},\"shared_data\":null}"
+			},
+			{
+				"id": "layer:///messages/d694a3fb-5d56-48b3-9c6e-f517b8283bb5/parts/a19a0de9-91cf-4d71-99d0-c8e98002c95c",
+				"url": "https://api.layer.com/messages/d694a3fb-5d56-48b3-9c6e-f517b8283bb5/parts/a19a0de9-91cf-4d71-99d0-c8e98002c95c",
+				"mime_type": "application/vnd.layer.card.text+json;node-id=5ac19e37-54fb-481f-ade1-4b67e86c2afb;role=message;parent-node-id=b9c15744-71b2-4748-aa8a-27c35d286626",
+				"body": "{\"action\":{},\"purpose\":\"\",\"custom_data\":{},\"text\":\"Arun selected 👍\",\"author\":\"\",\"summary\":\"\",\"title\":\"\",\"subtitle\":\"\"}"
+			}
+		],
+		"sent_at": "2017-10-04T20:08:22.087Z",
+		"sender": {
+			"id": "layer:///identities/852ebdd9-8b9f-4f7c-adcb-4d3ed0acb8cd",
+			"url": "https://api.layer.com/apps/2f1707c0-fd2f-11e6-ae72-c27751092ce1/identities/852ebdd9-8b9f-4f7c-adcb-4d3ed0acb8cd",
+			"user_id": "852ebdd9-8b9f-4f7c-adcb-4d3ed0acb8cd",
+			"display_name": "Arun",
+			"avatar_url": "https://layer.com/wp-content/uploads/2017/06/arun-shankar.png"
+		},
+		"recipient_status": {
+			"layer:///identities/f5764172-ffbc-4469-836f-170ee7e2058b": "sent",
+			"layer:///identities/852ebdd9-8b9f-4f7c-adcb-4d3ed0acb8cd": "read",
+			"layer:///identities/174fe653-85a1-4667-b166-9c35c1caa0b7": "sent",
+			"layer:///identities/24f62059-af18-4569-8fb0-2d372f9582e8": "sent",
+			"layer:///identities/ebc88b1c-03df-47b1-b0bf-8e5320ab3bc0": "sent",
+			"layer:///identities/328bc48d-da95-4b2b-bbdf-5141cee79eb0": "sent",
+			"layer:///identities/2f2edad9-f0f0-4a00-ab4a-ca9d1a2a939c": "sent"
+		},
+		"position": 33472020348928
+	}
+}

@@ -1,0 +1,87 @@
+
+service: layer-message-responses
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: us-east-1
+  stage: dev
+  timeout: 25
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:UpdateItem
+        - dynamodb:PutItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.tableName}"
+    - Effect: Allow
+      Action:
+        - kinesis:PutRecord
+        - kinesis:GetRecords
+        - kinesis:GetShardIterator
+        - kinesis:DescribeStream
+        - kinesis:ListStreams
+      Resource: ${self:custom.kinesisArn}
+
+custom:
+  tableName: ${file(./src/config.js):tableName}
+  kinesisArn: ${file(./src/config.js):kinesisArn}
+
+plugins:
+  - serverless-mocha-plugin
+
+package:
+  exclude:
+    - .gitignore
+    - package.json
+    - README.md
+    - .git/**
+
+functions:
+  webhook:
+    handler: src/handlers.webhook
+    description: 'Webhook capture endpoint'
+    events:
+      - http:
+          path: /
+          method: post
+          cors: true
+  ingest:
+    handler: src/handlers.ingest
+    description: "Kinesis ingest"
+    events:
+      - stream:
+          arn: ${self:custom.kinesisArn}
+          batchSize: 1 # NOTE: This should set to 1
+          startingPosition: TRIM_HORIZON
+          enabled: true
+  verify:
+    handler: src/handlers.verify
+    description: 'Webhook verification endpoint'
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true
+resources:
+  Resources:
+    messagesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.tableName}
+        AttributeDefinitions:
+          - AttributeName: messageId
+            AttributeType: S
+          - AttributeName: responseToNodeId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: messageId
+            KeyType: HASH
+          - AttributeName: responseToNodeId
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 10

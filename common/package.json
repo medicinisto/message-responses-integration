@@ -1,0 +1,15 @@
+{
+  "name": "common",
+  "version": "1.0.0-pre1.0",
+  "description": "Message Responses common",
+  "scripts": {
+    "test": "mocha --require should --bail test/*spec.js"
+  },
+  "devDependencies": {
+    "@layerhq/idk": "^1.0.0-pre1.0",
+    "mocha": "^4.1.0",
+    "nock": "^9.1.6",
+    "should": "^13.2.1",
+    "standard": "^10.0.3"
+  }
+}
