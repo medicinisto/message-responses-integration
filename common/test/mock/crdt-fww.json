@@ -1,0 +1,52 @@
+{
+  "messageId": "message-1",
+  "responses": {
+    "sender-1": [
+      {
+        "name": "change-1",
+        "id": "1",
+        "type": "FWW",
+        "operation": "add",
+        "value": "red"
+      },
+      {
+        "name": "change-1",
+        "id": "2",
+        "type": "FWW",
+        "operation": "add",
+        "value": "red"
+      },
+      {
+        "name": "change-1",
+        "id": "3",
+        "type": "FWW",
+        "operation": "remove",
+        "value": "blue"
+      },
+      {
+        "name": "change-2",
+        "id": "4",
+        "type": "FWW",
+        "operation": "add",
+        "value": "pink"
+      }
+    ],
+    "sender-2": [
+      {
+        "name": "change-1",
+        "id": "5",
+        "type": "FWW",
+        "operation": "add",
+        "value": "black"
+      },
+      {
+        "name": "change-1",
+        "id": "6",
+        "type": "FWW",
+        "operation": "add",
+        "value": "black"
+      }
+    ]
+  },
+  "responseToNodeId": "node-1"
+}

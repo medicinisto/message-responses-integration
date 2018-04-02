@@ -1,0 +1,48 @@
+{
+  "event": {
+    "id": "0b67b5e0-eedf-4d89-aaee-d38f3329ffec",
+    "type": "Message.created",
+    "created_at": "2018-03-20T23:23:47.086Z"
+  },
+  "actor": {
+    "id": "layer:///identities/f9401b9a-aeab-439b-92b1-7832480162cf",
+    "url": "https://api.layer.com/apps/2f1707c0-fd2f-11e6-ae72-c27751092ce1/identities/f9401b9a-aeab-439b-92b1-7832480162cf",
+    "user_id": "f9401b9a-aeab-439b-92b1-7832480162cf",
+    "display_name": "Nil"
+  },
+  "message": {
+    "id": "layer:///messages/0b67b5e0-eedf-4d89-aaee-d38f3329ffec",
+    "url": "https://api.layer.com/apps/2f1707c0-fd2f-11e6-ae72-c27751092ce1/conversations/514b6c79-76bc-45a2-a0c4-c4d0f6af5f08/messages/0b67b5e0-eedf-4d89-aaee-d38f3329ffec",
+    "conversation": {
+      "id": "layer:///conversations/514b6c79-76bc-45a2-a0c4-c4d0f6af5f08",
+      "url": "https://api.layer.com/apps/2f1707c0-fd2f-11e6-ae72-c27751092ce1/conversations/514b6c79-76bc-45a2-a0c4-c4d0f6af5f08"
+    },
+    "parts": [
+      {
+        "id": "layer:///messages/0b67b5e0-eedf-4d89-aaee-d38f3329ffec/parts/0",
+        "url": "https://api.layer.com/messages/0b67b5e0-eedf-4d89-aaee-d38f3329ffec/parts/d018686e-0200-40df-be94-6c74e550c38e",
+        "mime_type": "application/vnd.layer.response-v2+json;role=root",
+        "body": "{\"response_to\":\"layer:///messages/6d73a88b-527c-4b2a-aca8-ad8b95316096\",\"response_to_node_id\":\"0cd7bfc0-6019-49cc-a28f-f2554f00da03\",\"changes\":[{\"operation\":\"add\",\"type\":\"LWWN\",\"value\":\"red\",\"name\":\"selection\",\"id\":\"<_ELzf\"}]}"
+      },
+      {
+        "id": "layer:///messages/0b67b5e0-eedf-4d89-aaee-d38f3329ffec/parts/1",
+        "url": "https://api.layer.com/messages/0b67b5e0-eedf-4d89-aaee-d38f3329ffec/parts/67580e3b-698d-4cda-babd-06243696611c",
+        "mime_type": "application/vnd.layer.status+json;role=status;parent-node-id=d018686e-0200-40df-be94-6c74e550c38e",
+        "body": "{\"text\":\"Nil selected \\\"red\\\"\"}"
+      }
+    ],
+    "sent_at": "2018-03-20T23:23:47.086Z",
+    "sender": {
+      "id": "layer:///identities/f9401b9a-aeab-439b-92b1-7832480162cf",
+      "url": "https://api.layer.com/apps/2f1707c0-fd2f-11e6-ae72-c27751092ce1/identities/f9401b9a-aeab-439b-92b1-7832480162cf",
+      "user_id": "f9401b9a-aeab-439b-92b1-7832480162cf",
+      "display_name": "Nil"
+    },
+    "recipient_status": {
+      "layer:///identities/174fe653-85a1-4667-b166-9c35c1caa0b7": "sent",
+      "layer:///identities/852ebdd9-8b9f-4f7c-adcb-4d3ed0acb8cd": "sent",
+      "layer:///identities/f9401b9a-aeab-439b-92b1-7832480162cf": "read"
+    },
+    "position": 560839786496
+  }
+}

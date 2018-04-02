@@ -6,7 +6,7 @@
     "test": "mocha --require should --bail test/*spec.js"
   },
   "devDependencies": {
-    "@layerhq/idk": "^1.0.0-pre1.0",
+    "@layerhq/idk": "^1.0.0-pre1.2",
     "mocha": "^4.1.0",
     "nock": "^9.1.6",
     "should": "^13.2.1",

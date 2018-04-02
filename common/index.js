@@ -1,4 +1,4 @@
 'use strict'
 
-exports.messages = require('./messages')
+exports.responses = require('./responses')
 exports.uuid = require('./uuid')

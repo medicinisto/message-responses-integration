@@ -28,15 +28,16 @@ exports.webhook = (context, req) => {
 
     const data = Responses.parseMessage(webhook.message)
     if (!data) {
+      log.info('Webhook: (no response parts)')
       context.res = { status: 200 }
       context.done()
       return
     }
 
-    const responses = new Responses(data, layerIDK)
-    log.info(`Webhook: ${data.conversationId}:${data.messageId}`)
+    const responses = new Responses(data.conversationId, layerIDK)
+    log.info(`Webhook: [${data.responseType}] ${data.conversationId}`)
     tabledb.store(data)
-      .then((parts) => responses.process(parts))
+      .then((res) => responses.process(res))
       .then((res) => {
         log.info(`Webhook: ${res.message}`)
         if (res.status) {
@@ -55,7 +56,7 @@ exports.webhook = (context, req) => {
         context.done(err)
       })
   } catch (err) {
-    log.error('Webhook: ', err)
+    log.error('Webhook:', err)
     context.res = { status: 500 }
     context.done(err)
   }

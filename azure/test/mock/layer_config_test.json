@@ -1,6 +1,6 @@
 {
   "app_id": "layer:///apps/staging/2f1707c0-fd2f-11e6-ae72-c27751092ce1",
-  "service_name": "layer-card-responses-philo",
+  "service_name": "layer-card-responses-test",
   "provider": "azure",
   "webhook": {
     "secret": "test123",
@@ -12,6 +12,6 @@
     "token": "secretoken",
     "permissions": []
   },
-  "storage_account_name": "someintegrationname",
-  "storage_access_key": "accesskey"
+  "storage_account_name": "account-name",
+  "storage_access_key": "YWNjZXNza2V5"
 }

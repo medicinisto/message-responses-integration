@@ -1,98 +1,93 @@
 'use strict'
 
+// https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/dynamodb-example-document-client.html
 const AWS = require('aws-sdk')
+const Responses = require('common/responses')
 
 const config = require('./config')
 
 AWS.config.setPromisesDependency(Promise)
 
-// https://docs.aws.amazon.com/amazondynamodb/latest/gettingstartedguide/GettingStarted.NodeJs.html
-const docClient = new AWS.DynamoDB.DocumentClient()
+const docClient = new AWS.DynamoDB.DocumentClient(config.dynamoParams())
 const TableName = config.tableName()
+
+exports.store = ({ responseType, senderId, initialState, messagePart }) => {
+  switch (responseType) {
+    case 'initial-state':
+      const changes = Responses.initialChanges(initialState)
+      return batchWrite(changes)
+    case 'response-message':
+      const body = JSON.parse(messagePart.body)
+      const messageId = body.response_to
+      const responseToNodeId = body.response_to_node_id
+
+      return getRecord({ messageId, responseToNodeId })
+        .then((existing) => {
+          let responses = existing ? existing.responses : {}
+          if (responses[senderId]) {
+            responses[senderId] = responses[senderId].concat(body.changes)
+          } else {
+            responses[senderId] = body.changes
+          }
+          return updateRecord({ messageId, responseToNodeId }, responses)
+        })
+  }
+}
+
+/**
+ * Batch write operation
+ */
+function batchWrite (changes) {
+  return docClient.batchWrite({
+    RequestItems: {
+      [TableName]: changes.map(({
+        initialPartId,
+        messageId,
+        responseToNodeId,
+        responses
+      }) => {
+        return {
+          PutRequest: {
+            Item: {
+              initialPartId,
+              messageId,
+              responseToNodeId,
+              responses
+            }
+          }
+        }
+      })
+    }
+  }).promise().then(() => changes)
+}
 
 /**
  * Get a single entry
  */
-const getRecord = (data) => {
-  if (!data) return Promise.resolve({})
-  const responsePart = data.responsePart
-  const body = JSON.parse(responsePart.body)
-  const messageId = body.response_to
-  const responseToNodeId = body.response_to_node_id
-  const record = {
+function getRecord ({ messageId, responseToNodeId }) {
+  return docClient.get({
     TableName,
     Key: {
       messageId,
       responseToNodeId
     }
-  }
-  return docClient.get(record).promise()
+  }).promise().then(({ Item }) => Item)
 }
 
 /**
- * Put one entry into the db
- */
-const setRecord = (data) => {
-  const responsePart = data.responsePart
-  const body = JSON.parse(responsePart.body)
-  const messageId = body.response_to
-  const responseToNodeId = body.response_to_node_id
-  const responses = {
-    [data.senderId]: responsePart
-  }
-  const record = {
-    TableName,
-    Item: {
-      messageId,
-      responseToNodeId,
-      responses
-    }
-  }
-  return docClient.put(record).promise()
-}
-
-/**
-* Update an entry in dynamodb
+* Update an entry
 */
-const updateRecord = (existingRecord, data) => {
-  const responsePart = data.responsePart
-  const body = JSON.parse(responsePart.body)
-  const messageId = body.response_to
-  const responseToNodeId = body.response_to_node_id
-  let responses = existingRecord.Item && existingRecord.Item.responses
-    ? existingRecord.Item.responses : null
-  if (!responses) return Promise.resolve(null)
-
-  let existingRecordFromDB = responses[data.senderId] || {}
-  let existingBody = existingRecordFromDB.body ? JSON.parse(existingRecordFromDB.body) : {}
-  let participantData = existingBody.participant_data ? existingBody.participant_data : {}
-
-  let finalParticipantData = Object.assign({}, participantData, body.participant_data)
-  body.participant_data = finalParticipantData
-  responsePart.body = JSON.stringify(body)
-
-  responses[data.senderId] = responsePart
-  const record = {
+function updateRecord ({ messageId, responseToNodeId }, responses) {
+  return docClient.update({
     TableName,
     Key: {
       messageId,
       responseToNodeId
     },
-    UpdateExpression: 'set responses = :r',
+    UpdateExpression: 'SET responses = :r',
     ExpressionAttributeValues: {
       ':r': responses
     },
-    ReturnValues: 'UPDATED_NEW'
-  }
-  return docClient.update(record).promise()
-}
-
-exports.store = (data) => {
-  return getRecord(data)
-    .then((res) => {
-      if (!Object.keys(res).length) return setRecord(data)
-      return updateRecord(res, data)
-    })
-    .then(() => getRecord(data))
-    .then(({ Item }) => Item ? Item.responses : null)
+    ReturnValues: 'ALL_NEW'
+  }).promise().then(({ Attributes }) => Attributes)
 }

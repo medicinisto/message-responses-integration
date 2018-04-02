@@ -22,13 +22,13 @@
 			{
 				"id": "layer:///messages/d694a3fb-5d56-48b3-9c6e-f517b8283bb5/parts/710e6e37-46d1-457c-9552-3768598eea25",
 				"url": "https://api.layer.com/messages/d694a3fb-5d56-48b3-9c6e-f517b8283bb5/parts/710e6e37-46d1-457c-9552-3768598eea25",
-				"mime_type": "application/vnd.layer.card.response+json;node-id=b9c15744-71b2-4748-aa8a-27c35d286626;role=root",
+				"mime_type": "application/vnd.layer.response+json;node-id=b9c15744-71b2-4748-aa8a-27c35d286626;role=root",
 				"body": "{\"action\":{},\"purpose\":\"\",\"custom_data\":{},\"response_to\":\"layer:///messages/d7da2324-bb05-4021-bc47-32d53058d47e\",\"response_to_node_id\":\"e063155a-9c29-41c8-a3cb-4492553e664f\",\"participant_data\":{\"thumborientation\":\"like\"},\"shared_data\":null}"
 			},
 			{
 				"id": "layer:///messages/d694a3fb-5d56-48b3-9c6e-f517b8283bb5/parts/a19a0de9-91cf-4d71-99d0-c8e98002c95c",
 				"url": "https://api.layer.com/messages/d694a3fb-5d56-48b3-9c6e-f517b8283bb5/parts/a19a0de9-91cf-4d71-99d0-c8e98002c95c",
-				"mime_type": "application/vnd.layer.card.text+json;node-id=5ac19e37-54fb-481f-ade1-4b67e86c2afb;role=message;parent-node-id=b9c15744-71b2-4748-aa8a-27c35d286626",
+				"mime_type": "application/vnd.layer.text+json;node-id=5ac19e37-54fb-481f-ade1-4b67e86c2afb;role=message;parent-node-id=b9c15744-71b2-4748-aa8a-27c35d286626",
 				"body": "{\"action\":{},\"purpose\":\"\",\"custom_data\":{},\"text\":\"Arun selected 👍\",\"author\":\"\",\"summary\":\"\",\"title\":\"\",\"subtitle\":\"\"}"
 			}
 		],

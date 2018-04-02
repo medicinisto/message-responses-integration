@@ -10,12 +10,11 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
-        - dynamodb:Query
-        - dynamodb:Scan
         - dynamodb:GetItem
         - dynamodb:UpdateItem
         - dynamodb:PutItem
         - dynamodb:DeleteItem
+        - dynamodb:BatchWriteItem
       Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.tableName}"
     - Effect: Allow
       Action:
@@ -32,6 +31,7 @@ custom:
 
 plugins:
   - serverless-mocha-plugin
+  - serverless-dynamodb-local
 
 package:
   exclude:

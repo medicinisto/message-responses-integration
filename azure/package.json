@@ -6,23 +6,19 @@
   "repository": "layerhq/message-responses-integration",
   "scripts": {
     "build": "webpack",
-    "package": "node src/scripts/createStorageTable",
-    "deploy": "npm install; npm run package; npm run build; serverless deploy",
-    "test": "LAYER_CONFIG=../test/mock/layer_config_test.json LOG_LEVEL=none sls invoke test"
-  },
-  "eslintConfig": {
-    "globals": {
-      "window": true
-    }
+    "db": "node src/scripts/createStorageTable",
+    "deploy": "npm install; npm run db; npm run build; sls deploy",
+    "test":
+      "LAYER_CONFIG=../test/mock/layer_config_test.json LOG_LEVEL=none sls invoke test"
   },
   "dependencies": {
-    "@layerhq/idk": "^1.0.0-pre1.0",
-    "azure-storage": "^2.2.2",
+    "@layerhq/idk": "^1.0.0-pre1.2",
+    "azure-storage": "^2.8.1",
     "common": "file:./common/"
   },
   "devDependencies": {
     "proxyquire": "^1.8.0",
-    "serverless-azure-functions": "*",
+    "serverless-azure-functions": "0.4.0",
     "serverless-mocha-plugin": "^1.7.0",
     "webpack": "^3.7.1"
   }

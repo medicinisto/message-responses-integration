@@ -32,7 +32,7 @@ exports.webhook = (event, context, callback) => {
       return
     }
 
-    log.info(`Webhook: ${data.conversationId}:${data.messageId}`)
+    log.info(`Webhook: ${data.conversationId}`)
     kinesis.insert(data)
       .then(() => {
         log.info('Webhook: OK')
@@ -65,10 +65,10 @@ exports.ingest = (event, context, callback) => {
     return
   }
 
-  const responses = new Responses(record, layerIDK)
-  log.info(`Ingest: ${record.conversationId}:${record.messageId}`)
+  const responses = new Responses(record.conversationId, layerIDK)
+  log.info(`Ingest: [${record.responseType}] ${record.conversationId}`)
   dynamodb.store(record)
-    .then((parts) => responses.process(parts))
+    .then((res) => responses.process(res))
     .then((res) => {
       log.info(`Ingest: ${res.message}`)
       if (res.status) {
