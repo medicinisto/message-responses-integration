@@ -1,7 +1,7 @@
 # Message Responses Integration
 [![Build Status](https://circleci.com/gh/layerhq/message-responses-integration.png?circle-token=8144c9bfcbf48b7a0f0f2f372753c2b814de82b5)](https://circleci.com/gh/layerhq/message-responses-integration)
 
-Message Responses Integration, built using the Layer [Integration Development Kit](https://preview-docs.layer.com/reference/integrations/framework). A stateful serverless way to maintain states for message responses on AWS and Azure using
+Message Responses Integration, built using the Layer [Integration Development Kit](https://preview.layer.com/reference/integrations/framework). A stateful serverless way to maintain states for message responses on AWS and Azure using
 Serverless framework.
 
 ## Prerequisites

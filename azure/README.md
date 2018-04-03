@@ -1,6 +1,6 @@
 # Message Responses Integration
 
-Message Responses Integration, built using the Layer [Integration Development Kit](https://preview-docs.layer.com/reference/integrations/framework).
+Message Responses Integration, built using the Layer [Integration Development Kit](https://preview.layer.com/reference/integrations/framework).
 
 ## Microsoft Azure
 
