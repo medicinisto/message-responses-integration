@@ -137,6 +137,7 @@ module.exports = class Responses {
 
     message.parts.forEach((part) => {
       if (part.mime_type.indexOf(MIME_TYPES.response) === 0) {
+        if (!part.body) return null
         responseType = 'response-message'
         messagePart = part
       }
